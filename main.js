@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Menu } = require('electron/main')
+const { app, BrowserWindow, ipcMain, Menu, shell } = require('electron/main')
 const path = require('node:path')
 
 function createWindow () {
@@ -12,6 +12,7 @@ function createWindow () {
     const webContents = event.sender
     const win = BrowserWindow.fromWebContents(webContents)
     win.setTitle(title)
+    shell.openPath(app.getAppPath() + '\\batchtest.bat')
   })
 
   mainWindow.loadFile('index.html')
