@@ -1,0 +1,4 @@
+status -> git status
+track file -> git add <filename>
+push -> git push
+commit -> git commit -a -m "text"
