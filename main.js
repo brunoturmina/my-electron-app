@@ -3,15 +3,25 @@ const path = require('node:path')
 
 function createWindow () {
   const mainWindow = new BrowserWindow({
+    width: 1920,
+    height: 1080,
+    icon: 'corvo.jpg',
     webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: false,
+      enableRemoteModule: false,
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
-  ipcMain.on('set-title', (event, title) => {
-    const webContents = event.sender
-    const win = BrowserWindow.fromWebContents(webContents)
-    win.setTitle(title)
+  // ipcMain.on('set-title', (event, title) => {
+  //   const webContents = event.sender
+  //   const win = BrowserWindow.fromWebContents(webContents)
+  //   win.setTitle(title)
+  //   shell.openPath(app.getAppPath() + '\\batchtest.bat')
+  // })
+
+  ipcMain.on('set-title', (event) => {
     shell.openPath(app.getAppPath() + '\\batchtest.bat')
   })
 
